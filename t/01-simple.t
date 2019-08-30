@@ -15,7 +15,7 @@ run_me {
         columns => [qw/ id /],
         tablesample => 5,
     },
-    sql => q{SELECT me.id FROM artist me TABLESAMPLE SYSTEM (5)},
+    sql => q{SELECT me.id FROM artist me TABLESAMPLE(5)},
 };
 
 run_me {
@@ -24,6 +24,7 @@ run_me {
         columns => [qw/ id /],
         tablesample => {
             fraction => 0.5,
+            type     => 'system',
         },
     },
     sql => q{SELECT me.id FROM artist me TABLESAMPLE SYSTEM (0.5)},
@@ -64,7 +65,7 @@ run_me {
             repeatable => '1234',
         },
     },
-    sql => q{SELECT me.id FROM artist me TABLESAMPLE SYSTEM (20) REPEATABLE (1234)},
+    sql => q{SELECT me.id FROM artist me TABLESAMPLE(20) REPEATABLE (1234)},
 };
 
 done_testing;

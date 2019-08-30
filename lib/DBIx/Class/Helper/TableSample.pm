@@ -30,27 +30,27 @@ sub _resolved_attrs {
         $rs->throw_exception('tablesample must be a hashref')
           unless ref $conf eq 'HASH';
 
-        $conf->{type} //= 'system';
-
         my $sqla = $rs->result_source->storage->sql_maker;
 
-        my $arg = $conf->{fraction};
+        my $part_sql = " tablesample";
 
-        my $part_sql = $sqla->_sqlcase(
-            sprintf( ' tablesample %s (%s)', $conf->{type}, $arg )
-        );
+        if (my $type = $conf->{type}) {
+            $part_sql .= " $type";
+        }
+
+        my $arg = $conf->{fraction};
+        $part_sql .= "($arg)";
 
         if ( defined $conf->{repeatable} ) {
-            $part_sql .= $sqla->_sqlcase(
-                sprintf( ' repeatable (%s)', $conf->{repeatable} ) );
+            $part_sql .= sprintf( ' repeatable (%s)', $conf->{repeatable} );
         }
 
         if (ref $from eq 'ARRAY') {
-            my $sql = $sqla->_from_chunk_to_sql($from->[0]) . $part_sql;
+            my $sql = $sqla->_from_chunk_to_sql($from->[0]) . $sqla->_sqlcase($part_sql);
             $from->[0] = \$sql;
         }
         else {
-            my $sql = $sqla->_from_chunk_to_sql($from) . $part_sql;
+            my $sql = $sqla->_from_chunk_to_sql($from) . $sqla->_sqlcase($part_sql);
             $attrs->{from} = \$sql;
         }
 

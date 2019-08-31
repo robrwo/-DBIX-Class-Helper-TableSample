@@ -51,10 +51,11 @@ reference:
 
 - `fraction`
 
-    This is the percentage or fraction of the table to sample.
+    This is the percentage or fraction of the table to sample,
+    between 0 and 100, or a numeric expression that returns
+    such a value.
 
-    Depending on your database, this can be a decimal or must
-    be an integer.
+    (Some databases may restrict this to an integer.)
 
     The value is not checked by this helper, so you can use
     database-specific extensions, e.g. `1000 ROWS` or `15 PERCENT`.
@@ -124,8 +125,9 @@ Resultsets with joins or inner queries are not supported.
 
 This module is experimental.
 
-Not all databases support table sampling, they may have different
-restrictions.  You should consult your database documentation.
+Not all databases support table sampling, and thoser that do may have
+different restrictions.  You should consult your database
+documentation.
 
 # SEE ALSO
 

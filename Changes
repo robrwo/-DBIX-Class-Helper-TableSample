@@ -4,5 +4,8 @@ Revision history for {{$dist->name}}:
   [Documentation]
   - Minor rewording to improve clarity.
 
+  [Enhancements]
+  - Use Ref::Util for checking reference types.
+
 v0.1.0    2019-08-31 16:48:56+01:00 Europe/London
 - Initial version released.

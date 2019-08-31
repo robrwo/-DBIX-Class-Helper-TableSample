@@ -9,6 +9,12 @@ use warnings;
 
 use parent 'DBIx::Class::ResultSet';
 
+use Ref::Util qw/ is_plain_arrayref is_plain_hashref /;
+
+# RECOMMEND PREREQ: Ref::Util::XS
+
+use namespace::clean;
+
 our $VERSION = 'v0.2.0';
 
 =head1 SYNOPSIS
@@ -136,12 +142,12 @@ sub _resolved_attrs {
         my $from = $attrs->{from};
 
         $rs->throw_exception('tablesample on joins is not supported')
-            if (ref $from eq 'ARRAY') && @$from > 1;
+            if is_plain_arrayref($from) && @$from > 1;
 
         $conf = { fraction => $conf } unless ref $conf;
 
         $rs->throw_exception('tablesample must be a hashref')
-          unless ref $conf eq 'HASH';
+            unless is_plain_hashref($conf);
 
         my $sqla = $rs->result_source->storage->sql_maker;
 
@@ -158,7 +164,7 @@ sub _resolved_attrs {
             $part_sql .= sprintf( ' repeatable (%s)', $conf->{repeatable} );
         }
 
-        if (ref $from eq 'ARRAY') {
+        if (is_plain_arrayref($from)) {
             my $sql = $sqla->_from_chunk_to_sql($from->[0]) . $sqla->_sqlcase($part_sql);
             $from->[0] = \$sql;
         }

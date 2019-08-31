@@ -111,6 +111,8 @@ reference:
     If your database supports or requires a type, you can specify it,
     e.g. `system` or `bernoulli`.
 
+    See your database documentation for the allowable types.
+
 - `repeatable`
 
     If this key is specified, then it will add a REPEATABLE clause,

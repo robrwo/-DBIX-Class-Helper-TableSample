@@ -110,6 +110,8 @@ to generate
 If your database supports or requires a type, you can specify it,
 e.g. C<system> or C<bernoulli>.
 
+See your database documentation for the allowable types.
+
 =item C<repeatable>
 
 If this key is specified, then it will add a REPEATABLE clause,

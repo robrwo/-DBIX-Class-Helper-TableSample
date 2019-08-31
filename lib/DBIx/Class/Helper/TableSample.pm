@@ -2,7 +2,7 @@ package DBIx::Class::Helper::TableSample;
 
 # ABSTRACT: Add support for tablesample clauses
 
-use v5.10;
+use v5.10.1;
 
 use strict;
 use warnings;

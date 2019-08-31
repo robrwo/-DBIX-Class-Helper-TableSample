@@ -22,6 +22,24 @@ run_me {
     table_class => 'Artist',
     attr => {
         columns => [qw/ id /],
+        tablesample => \ '5 percent',
+    },
+    sql => q{SELECT me.id FROM artist me TABLESAMPLE(5 PERCENT)},
+};
+
+run_me {
+    table_class => 'Artist',
+    attr => {
+        columns => [qw/ id /],
+        tablesample => \ '100 rows',
+    },
+    sql => q{SELECT me.id FROM artist me TABLESAMPLE(100 ROWS)},
+};
+
+run_me {
+    table_class => 'Artist',
+    attr => {
+        columns => [qw/ id /],
         tablesample => {
             fraction => 0.5,
             type     => 'system',
@@ -63,6 +81,18 @@ run_me {
         tablesample => {
             fraction   => '20',
             repeatable => '1234',
+        },
+    },
+    sql => q{SELECT me.id FROM artist me TABLESAMPLE(20) REPEATABLE (1234)},
+};
+
+run_me {
+    table_class => 'Artist',
+    attr => {
+        columns => [qw/ id /],
+        tablesample => {
+            fraction   => \ '20',
+            repeatable => \ '1234',
         },
     },
     sql => q{SELECT me.id FROM artist me TABLESAMPLE(20) REPEATABLE (1234)},

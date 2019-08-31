@@ -60,6 +60,22 @@ reference:
     The value is not checked by this helper, so you can use
     database-specific extensions, e.g. `1000 ROWS` or `15 PERCENT`.
 
+    Scalar references are dereferenced, and expressions or
+    database-specific extensions should be specified has scalar
+    references, e.g.
+
+    ```perl
+    my $rs = $schema->resultset('Wobbles')->search_rs(
+      undef,
+      {
+        columns     => [qw/ id name /],
+        tablesample => {
+          fraction => \ "1000 ROWS",
+        },
+      }
+    );
+    ```
+
 - `type`
 
     By default, there is no sampling type., e.g. you can simply use:
@@ -118,6 +134,10 @@ reference:
     ```
     SELECT me.id FROM artist me TABLESAMPLE (5) REPEATABLE (123456)
     ```
+
+    Scalar references are dereferenced, and expressions or
+    database-specific extensions should be specified has scalar
+    references.
 
 Resultsets with joins or inner queries are not supported.
 

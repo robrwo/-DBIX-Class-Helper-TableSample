@@ -9,7 +9,7 @@ use warnings;
 
 use parent 'DBIx::Class::ResultSet';
 
-use Ref::Util qw/ is_plain_arrayref is_plain_hashref /;
+use Ref::Util qw/ is_plain_arrayref is_plain_hashref is_plain_scalarref /;
 
 # RECOMMEND PREREQ: Ref::Util::XS
 
@@ -67,6 +67,20 @@ such a value.
 The value is not checked by this helper, so you can use
 database-specific extensions, e.g. C<1000 ROWS> or C<15 PERCENT>.
 
+Scalar references are dereferenced, and expressions or
+database-specific extensions should be specified has scalar
+references, e.g.
+
+  my $rs = $schema->resultset('Wobbles')->search_rs(
+    undef,
+    {
+      columns     => [qw/ id name /],
+      tablesample => {
+        fraction => \ "1000 ROWS",
+      },
+    }
+  );
+
 =item C<type>
 
 By default, there is no sampling type., e.g. you can simply use:
@@ -116,6 +130,10 @@ to generate
 
   SELECT me.id FROM artist me TABLESAMPLE (5) REPEATABLE (123456)
 
+Scalar references are dereferenced, and expressions or
+database-specific extensions should be specified has scalar
+references.
+
 =back
 
 Resultsets with joins or inner queries are not supported.
@@ -144,7 +162,7 @@ sub _resolved_attrs {
         $rs->throw_exception('tablesample on joins is not supported')
             if is_plain_arrayref($from) && @$from > 1;
 
-        $conf = { fraction => $conf } unless ref $conf;
+        $conf = { fraction => $conf } unless is_plain_hashref($conf);
 
         $rs->throw_exception('tablesample must be a hashref')
             unless is_plain_hashref($conf);
@@ -158,10 +176,13 @@ sub _resolved_attrs {
         }
 
         my $arg = $conf->{fraction};
+        $arg = $$arg if is_plain_scalarref($arg);
         $part_sql .= "($arg)";
 
         if ( defined $conf->{repeatable} ) {
-            $part_sql .= sprintf( ' repeatable (%s)', $conf->{repeatable} );
+            my $seed = $conf->{repeatable};
+            $seed = $$seed if is_plain_scalarref($seed);
+            $part_sql .= sprintf( ' repeatable (%s)', $seed );
         }
 
         if (is_plain_arrayref($from)) {

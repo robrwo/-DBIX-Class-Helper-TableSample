@@ -1,0 +1,4 @@
+DBIx-Class-Helper-TableSample-*/
+DBIx-Class-Helper-TableSample-*.tar.gz
+.build/
+cpanfile.snapshot

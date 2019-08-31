@@ -111,6 +111,8 @@ to generate
 
 =back
 
+Resultsets with joins or inner queries are not supported.
+
 =head1 CAVEATS
 
 This module is experimental.

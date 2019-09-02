@@ -76,9 +76,9 @@ reference:
     );
     ```
 
-- `type`
+- `method`
 
-    By default, there is no sampling type., e.g. you can simply use:
+    By default, there is no sampling method, e.g. you can simply use:
 
     ```perl
     my $rs = $schema->resultset('Wobbles')->search_rs(
@@ -108,10 +108,32 @@ reference:
     SELECT me.id FROM artist me TABLESAMPLE (5)
     ```
 
-    If your database supports or requires a type, you can specify it,
-    e.g. `system` or `bernoulli`.
+    If your database supports or requires a sampling method, you can
+    specify it, e.g. `system` or `bernoulli`.
 
-    See your database documentation for the allowable types.
+    ```perl
+    my $rs = $schema->resultset('Wobbles')->search_rs(
+      undef,
+      {
+        columns     => [qw/ id name /],
+        tablesample => {
+           fraction => 5,
+           method   => 'system',
+        },
+      }
+    );
+    ```
+
+    will generate
+
+    ```
+    SELECT me.id FROM artist me TABLESAMPLE SYSTEM (5)
+    ```
+
+    See your database documentation for the allowable methods.
+
+    Prior to version 0.3.0, this was called `type`. It is supported for
+    backwards compatability.
 
 - `repeatable`
 

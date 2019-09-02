@@ -81,9 +81,9 @@ references, e.g.
     }
   );
 
-=item C<type>
+=item C<method>
 
-By default, there is no sampling type., e.g. you can simply use:
+By default, there is no sampling method, e.g. you can simply use:
 
   my $rs = $schema->resultset('Wobbles')->search_rs(
     undef,
@@ -110,7 +110,25 @@ to generate
 If your database supports or requires a sampling method, you can
 specify it, e.g. C<system> or C<bernoulli>.
 
+  my $rs = $schema->resultset('Wobbles')->search_rs(
+    undef,
+    {
+      columns     => [qw/ id name /],
+      tablesample => {
+         fraction => 5,
+         method   => 'system',
+      },
+    }
+  );
+
+will generate
+
+  SELECT me.id FROM artist me TABLESAMPLE SYSTEM (5)
+
 See your database documentation for the allowable methods.
+
+Prior to version 0.3.0, this was called C<type>. It is supported for
+backwards compatability.
 
 =item C<repeatable>
 
@@ -140,7 +158,7 @@ references.
 
 Resultsets with joins or inner queries are not supported.
 
-Delete and update queries are not supported. 
+Delete and update queries are not supported.
 
 =head1 CAVEATS
 
@@ -175,7 +193,7 @@ sub _resolved_attrs {
 
         my $part_sql = " tablesample";
 
-        if (my $type = $conf->{type}) {
+        if (my $type = ($conf->{method} // $conf->{type})) {
             $part_sql .= " $type";
         }
 

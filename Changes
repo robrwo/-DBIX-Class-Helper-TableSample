@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Incompatible Changes]
+  - "type" has been renamed to "method", but "type" will still be
+    supported for backwards compatability.
+
   [Documentation]
   - Minor rewording.
 

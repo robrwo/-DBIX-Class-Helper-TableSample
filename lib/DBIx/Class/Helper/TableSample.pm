@@ -107,10 +107,10 @@ to generate
 
   SELECT me.id FROM artist me TABLESAMPLE (5)
 
-If your database supports or requires a type, you can specify it,
-e.g. C<system> or C<bernoulli>.
+If your database supports or requires a sampling method, you can
+specify it, e.g. C<system> or C<bernoulli>.
 
-See your database documentation for the allowable types.
+See your database documentation for the allowable methods.
 
 =item C<repeatable>
 

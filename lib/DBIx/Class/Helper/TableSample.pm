@@ -140,6 +140,8 @@ references.
 
 Resultsets with joins or inner queries are not supported.
 
+Delete and update queries are not supported. 
+
 =head1 CAVEATS
 
 This module is experimental.

@@ -36,7 +36,7 @@ Using the resultset:
     {
       columns     => [qw/ id name /],
       tablesample => {
-        type     => 'system',
+        method   => 'system',
         fraction => 0.5,
       },
     }

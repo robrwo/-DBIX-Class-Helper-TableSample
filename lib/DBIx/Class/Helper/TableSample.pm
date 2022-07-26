@@ -164,7 +164,7 @@ Delete and update queries are not supported.
 
 This module is experimental.
 
-Not all databases support table sampling, and thoser that do may have
+Not all databases support table sampling, and those that do may have
 different restrictions.  You should consult your database
 documentation.
 

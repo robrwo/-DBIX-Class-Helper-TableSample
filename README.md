@@ -28,7 +28,7 @@ my $rs = $schema->resultset('Wobbles')->search_rs(
   {
     columns     => [qw/ id name /],
     tablesample => {
-      type     => 'system',
+      method   => 'system',
       fraction => 0.5,
     },
   }
@@ -38,7 +38,7 @@ my $rs = $schema->resultset('Wobbles')->search_rs(
 This generates the SQL
 
 ```
-SELECT me.id FROM artist me TABLESAMPLE SYSTEM (0.5)
+SELECT me.id, me.name FROM artist me TABLESAMPLE SYSTEM (0.5)
 ```
 
 # DESCRIPTION

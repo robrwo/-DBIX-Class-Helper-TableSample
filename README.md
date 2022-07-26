@@ -44,7 +44,7 @@ SELECT me.id FROM artist me TABLESAMPLE SYSTEM (0.5)
 # DESCRIPTION
 
 This helper adds rudimentary support for tablesample queries
-to [DBIx::Class](https://metacpan.org/pod/DBIx::Class) resultsets.
+to [DBIx::Class](https://metacpan.org/pod/DBIx%3A%3AClass) resultsets.
 
 The `tablesample` key supports the following options as a hash
 reference:
@@ -177,7 +177,7 @@ documentation.
 
 # SEE ALSO
 
-[DBIx::Class](https://metacpan.org/pod/DBIx::Class)
+[DBIx::Class](https://metacpan.org/pod/DBIx%3A%3AClass)
 
 # SOURCE
 

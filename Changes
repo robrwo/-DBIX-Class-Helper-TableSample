@@ -12,6 +12,8 @@ Revision history for {{$dist->name}}:
 
   - Bump copyright year.
 
+  - Fix encoding of links in README
+
 v0.2.0    2019-08-31 21:44:36+01:00 Europe/London
   [Documentation]
   - Minor rewording to improve clarity.

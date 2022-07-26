@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Documentation]
+  - Fixed typos.
 
 v0.3.0    2022-07-26 10:08:26+01:00 Europe/London
   [Incompatible Changes]
@@ -10,7 +12,7 @@ v0.3.0    2022-07-26 10:08:26+01:00 Europe/London
   [Documentation]
   - Minor rewording.
 
-  - Fix typo in SYNOPSIS.
+  - Fixed typo in SYNOPSIS.
 
   - Bump copyright year.
 

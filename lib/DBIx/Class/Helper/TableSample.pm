@@ -44,7 +44,7 @@ Using the resultset:
 
 This generates the SQL
 
-  SELECT me.id FROM artist me TABLESAMPLE SYSTEM (0.5)
+  SELECT me.id, me.name FROM artist me TABLESAMPLE SYSTEM (0.5)
 
 =head1 DESCRIPTION
 

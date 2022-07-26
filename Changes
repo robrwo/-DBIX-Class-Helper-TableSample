@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+
+v0.3.0    2022-07-26 10:08:26+01:00 Europe/London
   [Incompatible Changes]
   - "type" has been renamed to "method", but "type" will still be
     supported for backwards compatability.

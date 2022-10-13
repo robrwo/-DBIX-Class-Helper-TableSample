@@ -38,7 +38,7 @@ my $rs = $schema->resultset('Wobbles')->search_rs(
 This generates the SQL
 
 ```
-SELECT me.id, me.name FROM artist me TABLESAMPLE SYSTEM (0.5)
+SELECT me.id, me.name FROM table me TABLESAMPLE SYSTEM (0.5)
 ```
 
 # DESCRIPTION
@@ -105,7 +105,7 @@ reference:
     to generate
 
     ```
-    SELECT me.id FROM artist me TABLESAMPLE (5)
+    SELECT me.id FROM table me TABLESAMPLE (5)
     ```
 
     If your database supports or requires a sampling method, you can
@@ -127,7 +127,7 @@ reference:
     will generate
 
     ```
-    SELECT me.id FROM artist me TABLESAMPLE SYSTEM (5)
+    SELECT me.id FROM table me TABLESAMPLE SYSTEM (5)
     ```
 
     See your database documentation for the allowable methods.  Note that some databases require it.
@@ -156,7 +156,7 @@ reference:
     to generate
 
     ```
-    SELECT me.id FROM artist me TABLESAMPLE (5) REPEATABLE (123456)
+    SELECT me.id FROM table me TABLESAMPLE (5) REPEATABLE (123456)
     ```
 
     Scalar references are dereferenced, and expressions or

@@ -44,7 +44,7 @@ Using the resultset:
 
 This generates the SQL
 
-  SELECT me.id, me.name FROM artist me TABLESAMPLE SYSTEM (0.5)
+  SELECT me.id, me.name FROM table me TABLESAMPLE SYSTEM (0.5)
 
 =head1 DESCRIPTION
 
@@ -105,7 +105,7 @@ as an equivalent of
 
 to generate
 
-  SELECT me.id FROM artist me TABLESAMPLE (5)
+  SELECT me.id FROM table me TABLESAMPLE (5)
 
 If your database supports or requires a sampling method, you can
 specify it, e.g. C<system> or C<bernoulli>.
@@ -123,7 +123,7 @@ specify it, e.g. C<system> or C<bernoulli>.
 
 will generate
 
-  SELECT me.id FROM artist me TABLESAMPLE SYSTEM (5)
+  SELECT me.id FROM table me TABLESAMPLE SYSTEM (5)
 
 See your database documentation for the allowable methods.  Note that some databases require it.
 
@@ -148,7 +148,7 @@ e.g.
 
 to generate
 
-  SELECT me.id FROM artist me TABLESAMPLE (5) REPEATABLE (123456)
+  SELECT me.id FROM table me TABLESAMPLE (5) REPEATABLE (123456)
 
 Scalar references are dereferenced, and expressions or
 database-specific extensions should be specified has scalar

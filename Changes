@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+
+v0.3.2    2022-10-13 22:08:00+01:00 Europe/London
   [Documentation]
   - Fixed typos.
 

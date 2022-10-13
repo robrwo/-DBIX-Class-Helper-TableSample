@@ -163,13 +163,13 @@ reference:
     database-specific extensions should be specified has scalar
     references.
 
+# KNOWN ISSUES
+
 Resultsets with joins or inner queries are not supported.
 
 Delete and update queries are not supported.
 
-# CAVEATS
-
-This module is experimental.
+Oracle has a non-standard table sampling syntax, so is not yet supported.
 
 Not all databases support table sampling, and those that do may have
 different restrictions.  You should consult your database

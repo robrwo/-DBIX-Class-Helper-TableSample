@@ -125,7 +125,7 @@ will generate
 
   SELECT me.id FROM artist me TABLESAMPLE SYSTEM (5)
 
-See your database documentation for the allowable methods.
+See your database documentation for the allowable methods.  Note that some databases require it.
 
 Prior to version 0.3.0, this was called C<type>. It is supported for
 backwards compatability.

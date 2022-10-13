@@ -4,6 +4,8 @@ Revision history for {{$dist->name}}:
   [Documentation]
   - Fixed typos.
 
+  - Added explicit note that some databases require a sampling method.
+
 v0.3.1    2022-07-26 15:17:48+01:00 Europe/London
   [Documentation]
   - Fixed typos.

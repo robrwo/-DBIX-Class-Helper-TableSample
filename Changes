@@ -4,6 +4,9 @@ Revision history for {{$dist->name}}:
   [Enhancements]
   - Added the tablesample method, GH#3.
 
+  [Documentation]
+  - Reorganised POD.
+
   [Tests]
   - Cleaned up prerequisite reports.
 

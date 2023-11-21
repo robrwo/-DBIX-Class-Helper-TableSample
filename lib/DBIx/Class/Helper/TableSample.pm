@@ -49,8 +49,17 @@ This generates the SQL
 This helper adds rudimentary support for tablesample queries
 to L<DBIx::Class> resultsets.
 
-The C<tablesample> key supports the following options as a hash
-reference:
+=method search_rs
+
+This adds a C<tablesample> key to the search options, for example
+
+  $rs->search_rs( undef, { tablesample => 10 } );
+
+or
+
+  $rs->search_rs( undef, { tablesample => { fraction => 10, method => 'system' } } );
+
+Normally the value is a fraction, or a hash reference with the following options:
 
 =over
 

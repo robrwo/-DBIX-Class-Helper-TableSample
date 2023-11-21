@@ -46,8 +46,23 @@ SELECT me.id, me.name FROM table me TABLESAMPLE SYSTEM (0.5)
 This helper adds rudimentary support for tablesample queries
 to [DBIx::Class](https://metacpan.org/pod/DBIx%3A%3AClass) resultsets.
 
-The `tablesample` key supports the following options as a hash
-reference:
+# METHODS
+
+## search\_rs
+
+This adds a `tablesample` key to the search options, for example
+
+```perl
+$rs->search_rs( undef, { tablesample => 10 } );
+```
+
+or
+
+```perl
+$rs->search_rs( undef, { tablesample => { fraction => 10, method => 'system' } } );
+```
+
+Normally the value is a fraction, or a hash reference with the following options:
 
 - `fraction`
 
@@ -162,8 +177,6 @@ reference:
     Scalar references are dereferenced, and expressions or
     database-specific extensions should be specified has scalar
     references.
-
-# METHODS
 
 ## tablesample
 

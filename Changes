@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+
+v0.5.0    2023-11-21 17:19:41+00:00 Europe/London
   [Enhancements]
   - Added the tablesample method, GH#3.
 

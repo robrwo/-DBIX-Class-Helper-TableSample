@@ -207,6 +207,31 @@ sub _resolved_attrs {
     return $attrs;
 }
 
+=method tablesample
+
+  my $rs = $schema->resultset('Wobbles')->tablesample( $fraction, \%options );
+
+  my $rs = $schema->resultset('Wobbles')->tablesample( 10, { method => 'system' } );
+
+This is a helper method.
+
+It was added in v0.4.1.
+
+=cut
+
+sub tablesample {
+    my ( $rs, $frac, $options ) = @_;
+    $options //= {};
+    return $rs->search_rs(
+        undef,
+        {
+            tablesample => {
+                fraction => $frac,
+                %$options
+            }
+        }
+    );
+}
 
 =head1 KNOWN ISSUES
 

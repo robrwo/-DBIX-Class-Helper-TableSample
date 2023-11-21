@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Enhancements]
+  - Added the tablesample method, GH#3.
+
   [Tests]
   - Cleaned up prerequisite reports.
 

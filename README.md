@@ -163,6 +163,20 @@ reference:
     database-specific extensions should be specified has scalar
     references.
 
+# METHODS
+
+## tablesample
+
+```perl
+my $rs = $schema->resultset('Wobbles')->tablesample( $fraction, \%options );
+
+my $rs = $schema->resultset('Wobbles')->tablesample( 10, { method => 'system' } );
+```
+
+This is a helper method.
+
+It was added in v0.4.1.
+
 # KNOWN ISSUES
 
 Resultsets with joins or inner queries are not supported.

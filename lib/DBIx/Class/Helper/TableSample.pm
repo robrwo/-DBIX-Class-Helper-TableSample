@@ -154,18 +154,6 @@ references.
 
 =back
 
-=head1 KNOWN ISSUES
-
-Resultsets with joins or inner queries are not supported.
-
-Delete and update queries are not supported.
-
-Oracle has a non-standard table sampling syntax, so is not yet supported.
-
-Not all databases support table sampling, and those that do may have
-different restrictions.  You should consult your database
-documentation.
-
 =cut
 
 sub _resolved_attrs {
@@ -218,6 +206,19 @@ sub _resolved_attrs {
 
     return $attrs;
 }
+
+
+=head1 KNOWN ISSUES
+
+Resultsets with joins or inner queries are not supported.
+
+Delete and update queries are not supported.
+
+Oracle has a non-standard table sampling syntax, so is not yet supported.
+
+Not all databases support table sampling, and those that do may have
+different restrictions.  You should consult your database
+documentation.
 
 =head1 SUPPORT FOR OLDER PERL VERSIONS
 

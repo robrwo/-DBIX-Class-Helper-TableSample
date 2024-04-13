@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Enhancements]
+  - Tablesame can be used when there are joins.
 
 v0.5.0    2023-11-21 17:19:41+00:00 Europe/London
   [Enhancements]

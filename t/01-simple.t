@@ -110,4 +110,14 @@ run_me {
     sql => q{SELECT me.id FROM artist me TABLESAMPLE(20) REPEATABLE (1234)},
 };
 
+run_me {
+    table_class => 'Artist',
+    attr => {
+        join => 'cds',
+        columns => [qw/ id /],
+        tablesample => 5,
+    },
+    sql => q{SELECT me.id FROM artist me TABLESAMPLE(5) LEFT JOIN cd cds ON cds.artistid = me.artistid},
+};
+
 done_testing;

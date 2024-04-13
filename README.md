@@ -4,7 +4,7 @@ DBIx::Class::Helper::TableSample - Add support for tablesample clauses
 
 # VERSION
 
-version v0.5.0
+version v0.6.0
 
 # SYNOPSIS
 
@@ -191,8 +191,6 @@ This is a helper method.
 It was added in v0.4.1.
 
 # KNOWN ISSUES
-
-Resultsets with joins or inner queries are not supported.
 
 Delete and update queries are not supported.
 

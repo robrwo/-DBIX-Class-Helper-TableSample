@@ -13,7 +13,7 @@ use Ref::Util qw/ is_plain_arrayref is_plain_hashref is_plain_scalarref /;
 
 use namespace::clean;
 
-our $VERSION = 'v0.5.1';
+our $VERSION = 'v0.6.0';
 
 =head1 SYNOPSIS
 
@@ -176,9 +176,6 @@ sub _resolved_attrs {
 
         my $from = $attrs->{from};
 
-        $rs->throw_exception('tablesample on joins is not supported')
-            if is_plain_arrayref($from) && @$from > 1;
-
         $conf = { fraction => $conf } unless is_plain_hashref($conf);
 
         $rs->throw_exception('tablesample must be a hashref')
@@ -243,8 +240,6 @@ sub tablesample {
 }
 
 =head1 KNOWN ISSUES
-
-Resultsets with joins or inner queries are not supported.
 
 Delete and update queries are not supported.
 

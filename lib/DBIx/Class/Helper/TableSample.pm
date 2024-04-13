@@ -132,6 +132,20 @@ will generate
 
   SELECT me.id FROM table me TABLESAMPLE SYSTEM (5)
 
+The C<fraction> and C<method> options are not restricted, so they can be used with a variety of databases or
+extensions. For example, if you have the PostgreSQL C<tsm_system_rows> extension:
+
+  my $rs = $schema->resultset('Wobbles')->search_rs(
+    undef,
+    {
+      columns     => [qw/ id name /],
+      tablesample => {
+         fraction => 200,
+         method   => 'system_rows',
+      },
+    }
+  );
+
 See your database documentation for the allowable methods.  Note that some databases require it.
 
 Prior to version 0.3.0, this was called C<type>. It is supported for

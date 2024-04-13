@@ -65,6 +65,18 @@ run_me {
     attr => {
         columns => [qw/ id /],
         tablesample => {
+            fraction => 150,
+            method   => 'system_rows',
+        },
+    },
+    sql => q{SELECT me.id FROM artist me TABLESAMPLE SYSTEM_ROWS (150)},
+};
+
+run_me {
+    table_class => 'Artist',
+    attr => {
+        columns => [qw/ id /],
+        tablesample => {
             method  => 'bernoulli',
             fraction => 0.5,
         },

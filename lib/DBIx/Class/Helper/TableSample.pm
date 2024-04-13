@@ -2,7 +2,7 @@ package DBIx::Class::Helper::TableSample;
 
 # ABSTRACT: Add support for tablesample clauses
 
-use v5.14;
+use v5.20;
 use warnings;
 
 use parent 'DBIx::Class::ResultSet';
@@ -13,7 +13,9 @@ use Ref::Util qw/ is_plain_arrayref is_plain_hashref is_plain_scalarref /;
 
 use namespace::clean;
 
-our $VERSION = 'v0.6.1';
+use experimental qw/ signatures /;
+
+our $VERSION = 'v0.7.0';
 
 =head1 SYNOPSIS
 
@@ -179,8 +181,7 @@ references.
 
 =cut
 
-sub _resolved_attrs {
-    my $rs    = $_[0];
+sub _resolved_attrs($rs) {
 
     $rs->next::method;
 
@@ -239,8 +240,7 @@ It was added in v0.4.1.
 
 =cut
 
-sub tablesample {
-    my ( $rs, $frac, $options ) = @_;
+sub tablesample( $rs, $frac, $options = undef ) {
     $options //= {};
     return $rs->search_rs(
         undef,
@@ -265,13 +265,9 @@ documentation.
 
 =head1 SUPPORT FOR OLDER PERL VERSIONS
 
-Since v0.4.0, the this module requires Perl v5.14 or later.
+Since v0.7.0, the this module requires Perl v5.20 or later.
 
 Future releases may only support Perl versions released in the last ten years.
-
-If you need this module on Perl v5.10, please use one of the v0.3.x
-versions of this module.  Significant bug or security fixes may be
-backported to those versions.
 
 =head1 SEE ALSO
 

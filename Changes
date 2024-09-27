@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+
+v0.7.0    2024-09-27 17:24:27+01:00 Europe/London
   [Enhancements]
   - The tablesample method will accept a method name instead of a hashreference with a method key.
 

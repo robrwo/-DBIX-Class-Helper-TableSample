@@ -235,7 +235,7 @@ sub _resolved_attrs {
 
 This is a helper method.
 
-It was added in v0.4.1, since v0.4.2 you can use a method name instead of an options hash reference:
+It was added in v0.4.1, since v0.6.1 you can use a method name instead of an options hash reference:
 
   my $rs = $schema->resultset('Wobbles')->tablesample( 10, 'system' );
 

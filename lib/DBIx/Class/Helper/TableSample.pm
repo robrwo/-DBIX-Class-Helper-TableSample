@@ -235,13 +235,16 @@ sub _resolved_attrs {
 
 This is a helper method.
 
-It was added in v0.4.1.
+It was added in v0.4.1, since v0.4.2 you can use a method name instead of an options hash reference:
+
+  my $rs = $schema->resultset('Wobbles')->tablesample( 10, 'system' );
 
 =cut
 
 sub tablesample {
     my ( $rs, $frac, $options ) = @_;
     $options //= {};
+    $options = { method => $options } unless is_plain_hashref($options);
     return $rs->search_rs(
         undef,
         {

@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Enhancements]
+  - The tablesample method will accept a method name instead of a hashreference with a method key.
+
   [Bug Fixes]
   - Fixed the parent class.
 

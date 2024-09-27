@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Bug Fixes]
+  - Fixed the parent class.
+
   [Documentation]
   - Fixed typos in Changes.
 

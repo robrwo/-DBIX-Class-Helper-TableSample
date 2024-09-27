@@ -5,7 +5,7 @@ package DBIx::Class::Helper::TableSample;
 use v5.14;
 use warnings;
 
-use parent 'DBIx::Class::ResultSet';
+use parent 'DBIx::Class';
 
 use Ref::Util qw/ is_plain_arrayref is_plain_hashref is_plain_scalarref /;
 

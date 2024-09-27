@@ -4,7 +4,7 @@ DBIx::Class::Helper::TableSample - Add support for tablesample clauses
 
 # VERSION
 
-version v0.6.1
+version v0.7.0
 
 # SYNOPSIS
 

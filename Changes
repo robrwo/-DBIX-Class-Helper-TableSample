@@ -1,6 +1,11 @@
 Revision history for {{$dist->name}}:
 
 {{$NEXT}}
+  [Incompatible Changes]
+  - Bumped the minimum Perl to v5.20.
+
+  [Enhancements]
+  - The code uses newer Perl syntax features.
 
 v0.7.0    2024-09-27 17:24:27+01:00 Europe/London
   [Enhancements]

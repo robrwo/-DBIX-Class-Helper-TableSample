@@ -2,7 +2,7 @@ package DBIx::Class::Helper::TableSample;
 
 # ABSTRACT: Add support for tablesample clauses
 
-use v5.14;
+use v5.20;
 use warnings;
 
 use parent 'DBIx::Class';
@@ -12,6 +12,8 @@ use Ref::Util qw/ is_plain_arrayref is_plain_hashref is_plain_scalarref /;
 # RECOMMEND PREREQ: Ref::Util::XS
 
 use namespace::clean;
+
+use experimental qw/ postderef signatures /;
 
 our $VERSION = 'v0.7.1';
 
@@ -179,8 +181,7 @@ references.
 
 =cut
 
-sub _resolved_attrs {
-    my $rs    = $_[0];
+sub _resolved_attrs ($rs) {
 
     $rs->next::method;
 
@@ -209,7 +210,7 @@ sub _resolved_attrs {
 
         if ( defined $conf->{repeatable} ) {
             my $seed = $conf->{repeatable};
-            $seed = $$seed if is_plain_scalarref($seed);
+            $seed = $seed->$* if is_plain_scalarref($seed);
             $part_sql .= sprintf( ' repeatable (%s)', $seed );
         }
 
@@ -241,16 +242,14 @@ It was added in v0.4.1, since v0.6.1 you can use a method name instead of an opt
 
 =cut
 
-sub tablesample {
-    my ( $rs, $frac, $options ) = @_;
-    $options //= {};
+sub tablesample( $rs, $frac, $options = {} ) {
     $options = { method => $options } unless is_plain_hashref($options);
     return $rs->search_rs(
         undef,
         {
             tablesample => {
                 fraction => $frac,
-                %$options
+                $options->%*
             }
         }
     );

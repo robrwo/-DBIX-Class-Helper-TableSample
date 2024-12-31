@@ -255,6 +255,11 @@ sub tablesample( $rs, $frac, $options = {} ) {
     );
 }
 
+=head1 SECURITY
+
+Do not pass unvalidated options to the L</tablesample> method, or other L<DBIx::Class> methods, as these are used to
+generate raw SQL.
+
 =head1 KNOWN ISSUES
 
 Delete and update queries are not supported.

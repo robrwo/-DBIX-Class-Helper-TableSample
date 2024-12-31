@@ -210,6 +210,11 @@ It was added in v0.4.1, since v0.6.1 you can use a method name instead of an opt
 my $rs = $schema->resultset('Wobbles')->tablesample( 10, 'system' );
 ```
 
+# SECURITY
+
+Do not pass unvalidated options to the ["tablesample"](#tablesample) method, or other [DBIx::Class](https://metacpan.org/pod/DBIx%3A%3AClass) methods, as these are used to
+generate raw SQL.
+
 # KNOWN ISSUES
 
 Delete and update queries are not supported.
